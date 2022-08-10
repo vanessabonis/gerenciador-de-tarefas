@@ -31,6 +31,7 @@ public class TarefaService {
 
     public TarefaDTO salvar(TarefaDTO tarefaDTO) throws BadRequestException {
         if (existePorTitulo(tarefaDTO)) throw new BadRequestException("Essa Tarefa já existe");
+        tarefaDTO.setStatus(Status.EM_ANDAMENTO);
         var tarefa = mapper.toEntity(tarefaDTO);
         return mapper.toDto(repository.save(tarefa));
     }

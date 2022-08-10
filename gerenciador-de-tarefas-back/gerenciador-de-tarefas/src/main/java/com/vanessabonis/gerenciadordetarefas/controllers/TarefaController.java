@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
-@RequestMapping("/tarefas")
+@RequestMapping("api/tarefas")
 @RequiredArgsConstructor
 public class TarefaController {
 
@@ -27,6 +27,7 @@ public class TarefaController {
         return ResponseEntity.ok(service.obterPorId(id));
     }
 
+    //lembrar de mudar p buscar com query param (get)
     @PostMapping(path = "/listar", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Page<TarefaListagemDTO>> obterPorFiltro(@RequestBody TarefaFiltro filtro, Pageable pageable) {
         log.info("Listando tarefas");
@@ -36,6 +37,12 @@ public class TarefaController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<TarefaDTO> salvar(@RequestBody TarefaDTO tarefaDTO) throws BadRequestException {
         log.info("Salvando tarefa");
+        return ResponseEntity.ok(service.salvar(tarefaDTO));
+    }
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<TarefaDTO> atualizar(@RequestBody TarefaDTO tarefaDTO) throws BadRequestException {
+        log.info("Atualizando tarefa");
         return ResponseEntity.ok(service.salvar(tarefaDTO));
     }
 
