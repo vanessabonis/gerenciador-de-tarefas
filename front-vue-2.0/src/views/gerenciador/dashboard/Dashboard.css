@@ -1,0 +1,26 @@
+.menu-item {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#header-logo {
+  width: 190px;
+}
+
+@media(max-width: 409px) {
+  #header-logo {
+    width: 140px;
+  }
+}
+
+.p-megamenu-root-list {
+  display: inline-flex;
+}
+
+.p-megamenu-horizontal .p-megamenu-root-list {
+  display: inline-flex !important;
+}
+
+.p-megamenu-end {
+  display: inline-block;
+}
