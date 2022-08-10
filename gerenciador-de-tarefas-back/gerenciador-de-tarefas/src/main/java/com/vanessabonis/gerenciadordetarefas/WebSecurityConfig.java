@@ -38,9 +38,10 @@ public class WebSecurityConfig {
         config.setAllowCredentials(true);
         config.setAllowedOrigins(Arrays.asList("http://localhost:8080", "http://localhost:8081"));
 
-		config.addAllowedOrigin("*");
+//		config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/api/**", config);
 
         final FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
